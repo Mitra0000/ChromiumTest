@@ -17,6 +17,7 @@ import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.Te
 import org.jetbrains.annotations.NotNull;
 
 public class RunTestAction extends AnAction implements DumbAware {
+
   private final String mFileName;
   private final String mClassName;
   private final String mMethodName;

@@ -4,6 +4,7 @@ import com.intellij.execution.configurations.ConfigurationTypeBase;
 import com.intellij.icons.AllIcons.Xml.Browsers;
 
 public class TestRunnerConfigurationType extends ConfigurationTypeBase {
+
   static final String ID = "ChromiumTestRunnerConfig";
   private static final String DISPLAY_NAME = "Chromium Test Runner";
   private static final String DESCRIPTION = "Run Chromium tests automatically from the gutter.";

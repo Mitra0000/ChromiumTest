@@ -29,8 +29,10 @@
     <codeInsight.lineMarkerProvider language="JAVA"
         implementationClass="org.chromium.chromium_test.chromiumtest.TestLineMarkerDescriptor">
     </codeInsight.lineMarkerProvider>
-    <configurationType implementation="org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationType"/>
+    <configurationType
+        implementation="org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationType"/>
     <runLineMarkerContributor language="JAVA"
-        implementationClass="org.chromium.chromium_test.chromiumtest.TestRunLineMarkerContributor" order="first"/>
+        implementationClass="org.chromium.chromium_test.chromiumtest.TestRunLineMarkerContributor"
+        order="first"/>
   </extensions>
 </idea-plugin>

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TestRunnerSettingsEditor extends SettingsEditor<TestRunnerConfiguration> implements
     DumbAware {
+
   private final JPanel mPanel;
   private final TextFieldWithBrowseButton mCheckoutPathField;
   private final EditorTextField mPhysicalBuildDirectory;

@@ -8,13 +8,15 @@ import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class BisectTestAction extends AnAction implements DumbAware {
+
   private final String mFileName;
   private final String mClassName;
   private final String mMethodName;
 
   BisectTestAction(String fileName, String className, String methodName) {
     super(
-        String.format("Find when '%s' started failing", StringUtils.isNotEmpty(methodName) ? methodName : className),
+        String.format("Find when '%s' started failing",
+            StringUtils.isNotEmpty(methodName) ? methodName : className),
         "Bisects the selected tests to find when they started failing.",
         AllIcons.Debugger.ShowCurrentFrame);
     mFileName = fileName;
@@ -23,5 +25,6 @@ public class BisectTestAction extends AnAction implements DumbAware {
   }
 
   @Override
-  public void actionPerformed(@NotNull AnActionEvent e) {}
+  public void actionPerformed(@NotNull AnActionEvent e) {
+  }
 }

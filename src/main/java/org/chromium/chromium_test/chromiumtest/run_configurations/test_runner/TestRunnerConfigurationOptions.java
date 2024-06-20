@@ -4,6 +4,7 @@ import com.intellij.execution.configurations.RunConfigurationOptions;
 import com.intellij.openapi.components.StoredProperty;
 
 public class TestRunnerConfigurationOptions extends RunConfigurationOptions {
+
   private final StoredProperty<String> mCheckoutDirectory = string("").provideDelegate(this,
       "checkoutDirectory");
 

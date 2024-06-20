@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TestRunnerConfigurationFactory extends ConfigurationFactory {
+
   private final @NotNull String mFileName;
   private final @NotNull String mClassName;
   private final @NotNull String mMethodName;

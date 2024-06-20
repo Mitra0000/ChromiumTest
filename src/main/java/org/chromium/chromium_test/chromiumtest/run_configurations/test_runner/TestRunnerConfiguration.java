@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConfigurationOptions> {
+
   private @NotNull String mFileName = "";
   private @NotNull String mClassName = "";
   private @NotNull String mMethodName = "";
