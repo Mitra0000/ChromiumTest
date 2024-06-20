@@ -2,6 +2,7 @@ package org.chromium.chromium_test.chromiumtest.run_configurations.test_runner;
 
 import com.intellij.execution.configurations.ConfigurationTypeBase;
 import com.intellij.icons.AllIcons.Xml.Browsers;
+import org.chromium.chromium_test.chromiumtest.TestRequest;
 
 public class TestRunnerConfigurationType extends ConfigurationTypeBase {
 
@@ -11,6 +12,6 @@ public class TestRunnerConfigurationType extends ConfigurationTypeBase {
 
   public TestRunnerConfigurationType() {
     super(ID, DISPLAY_NAME, DESCRIPTION, Browsers.Chromium);
-    addFactory(new TestRunnerConfigurationFactory(this, "", "", ""));
+    addFactory(new TestRunnerConfigurationFactory(this, new TestRequest("", "", "")));
   }
 }

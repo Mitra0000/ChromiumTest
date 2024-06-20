@@ -15,10 +15,9 @@ public class TestRunnerConfigurationFactory extends ConfigurationFactory {
 
   private final TestRequest mRequest;
 
-  public TestRunnerConfigurationFactory(ConfigurationType type, @NotNull String fileName,
-      @NotNull String className, @NotNull String methodName) {
+  public TestRunnerConfigurationFactory(ConfigurationType type, TestRequest request) {
     super(type);
-    mRequest = new TestRequest(fileName, className, methodName);
+    mRequest = request;
   }
 
   @Override

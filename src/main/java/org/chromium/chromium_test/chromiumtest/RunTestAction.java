@@ -34,9 +34,10 @@ public class RunTestAction extends AnAction implements DumbAware {
   @Override
   public void actionPerformed(@NotNull AnActionEvent e) {
     TestRunnerConfigurationFactory factory = new TestRunnerConfigurationFactory(
-        new TestRunnerConfigurationType(), mRequest.fileName(), mRequest.className(), mRequest.methodName());
+        new TestRunnerConfigurationType(), mRequest);
     RunnerAndConfigurationSettings settings = RunManager.getInstance(e.getProject())
-        .createConfiguration(String.format("Testing %s#%s", mRequest.className(), mRequest.methodName()), factory);
+        .createConfiguration(
+            String.format("Testing %s#%s", mRequest.className(), mRequest.methodName()), factory);
     TestRunnerConfiguration config = (TestRunnerConfiguration) settings.getConfiguration();
     config.setFileName(mRequest.fileName());
     config.setClassName(mRequest.className());
