@@ -11,9 +11,9 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.wm.ToolWindowId;
 import icons.Icons;
 import org.apache.commons.lang.StringUtils;
-import org.chromium.chromium_test.chromiumtest.run_configuration.TestRunnerConfiguration;
-import org.chromium.chromium_test.chromiumtest.run_configuration.TestRunnerConfigurationFactory;
-import org.chromium.chromium_test.chromiumtest.run_configuration.TestRunnerConfigurationType;
+import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfiguration;
+import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationFactory;
+import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationType;
 import org.jetbrains.annotations.NotNull;
 
 public class RunTestAction extends AnAction implements DumbAware {

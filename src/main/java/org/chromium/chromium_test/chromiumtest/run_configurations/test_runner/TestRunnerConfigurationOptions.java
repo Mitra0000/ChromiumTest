@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest.run_configuration;
+package org.chromium.chromium_test.chromiumtest.run_configurations.test_runner;
 
 import com.intellij.execution.configurations.RunConfigurationOptions;
 import com.intellij.openapi.components.StoredProperty;
