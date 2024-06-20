@@ -18,9 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class RunTestAction extends AnAction implements DumbAware {
 
-  private final String mFileName;
-  private final String mClassName;
-  private final String mMethodName;
+  private final TestRequest mRequest;
   private final boolean mIsPhysicalDevice;
 
   RunTestAction(String fileName, String className, String methodName, boolean isPhysicalDevice) {
@@ -29,22 +27,20 @@ public class RunTestAction extends AnAction implements DumbAware {
             isPhysicalDevice ? "Device" : "Emulator"),
         "Runs the selected tests using autotest.",
         isPhysicalDevice ? Icons.AndroidDevice : AllIcons.CodeWithMe.CwmScreenOn);
-    mFileName = fileName;
-    mClassName = className;
-    mMethodName = methodName;
+    mRequest = new TestRequest(fileName, className, methodName);
     mIsPhysicalDevice = isPhysicalDevice;
   }
 
   @Override
   public void actionPerformed(@NotNull AnActionEvent e) {
     TestRunnerConfigurationFactory factory = new TestRunnerConfigurationFactory(
-        new TestRunnerConfigurationType(), mFileName, mClassName, mMethodName);
+        new TestRunnerConfigurationType(), mRequest.fileName(), mRequest.className(), mRequest.methodName());
     RunnerAndConfigurationSettings settings = RunManager.getInstance(e.getProject())
-        .createConfiguration(String.format("Testing %s#%s", mClassName, mMethodName), factory);
+        .createConfiguration(String.format("Testing %s#%s", mRequest.className(), mRequest.methodName()), factory);
     TestRunnerConfiguration config = (TestRunnerConfiguration) settings.getConfiguration();
-    config.setFileName(mFileName);
-    config.setClassName(mClassName);
-    config.setMethodName(mMethodName);
+    config.setFileName(mRequest.fileName());
+    config.setClassName(mRequest.className());
+    config.setMethodName(mRequest.methodName());
     config.setIsPhysical(mIsPhysicalDevice);
 
     ProgramRunnerUtil.executeConfiguration(settings,

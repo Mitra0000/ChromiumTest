@@ -6,22 +6,19 @@ import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.components.BaseState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsSafe;
+import org.chromium.chromium_test.chromiumtest.TestRequest;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TestRunnerConfigurationFactory extends ConfigurationFactory {
 
-  private final @NotNull String mFileName;
-  private final @NotNull String mClassName;
-  private final @NotNull String mMethodName;
+  private final TestRequest mRequest;
 
   public TestRunnerConfigurationFactory(ConfigurationType type, @NotNull String fileName,
       @NotNull String className, @NotNull String methodName) {
     super(type);
-    mFileName = fileName;
-    mClassName = className;
-    mMethodName = methodName;
+    mRequest = new TestRequest(fileName, className, methodName);
   }
 
   @Override
@@ -33,9 +30,9 @@ public class TestRunnerConfigurationFactory extends ConfigurationFactory {
   public @NotNull RunConfiguration createConfiguration(@NlsSafe @Nullable String name,
       @NotNull RunConfiguration template) {
     TestRunnerConfiguration config = (TestRunnerConfiguration) template;
-    config.setFileName(mFileName);
-    config.setClassName(mClassName);
-    config.setMethodName(mMethodName);
+    config.setFileName(mRequest.fileName());
+    config.setClassName(mRequest.className());
+    config.setMethodName(mRequest.methodName());
     return config;
   }
 

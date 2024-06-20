@@ -9,9 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BisectTestAction extends AnAction implements DumbAware {
 
-  private final String mFileName;
-  private final String mClassName;
-  private final String mMethodName;
+  private final TestRequest mRequest;
 
   BisectTestAction(String fileName, String className, String methodName) {
     super(
@@ -19,9 +17,7 @@ public class BisectTestAction extends AnAction implements DumbAware {
             StringUtils.isNotEmpty(methodName) ? methodName : className),
         "Bisects the selected tests to find when they started failing.",
         AllIcons.Debugger.ShowCurrentFrame);
-    mFileName = fileName;
-    mClassName = className;
-    mMethodName = methodName;
+    mRequest = new TestRequest(fileName, className, methodName);
   }
 
   @Override
