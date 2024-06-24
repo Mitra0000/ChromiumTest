@@ -12,15 +12,14 @@ come with unwanted side effects like popup error messages saying that Gradle
 couldn't build the test correctly.
 
 ## Setup
-Once the plugin is installed, go to Run > Edit Configurations... and at the
-bottom left of the dialog, select Edit configuration templates...
+Once the plugin is installed, go to File > Settings > Tools > Chromium Test
+Settings.
 
-A new window should pop up. Select Chromium Test Runner and the setup panel will
-load to the right. Next, point the Checkout directory to the root of your
-Clankium checkout and set the physical and emulator build directories. They
-default to out/Debug and out/Emulator. Once that is all done, you should see the
-new run icons appear in the gutter. Click one and select either Run on Device or
-Run on Emulator. It's as simple as that.
+The setup panel should load on the right hand side. First, point the Checkout
+directory to the root of your Clankium checkout and set the physical and
+emulator build directories. Once that is all done, you should see the new run
+icons appear in the gutter. Click one and select either Run on Device or Run on
+Emulator. It's as simple as that.
 
 If you don't see the icons showing in the gutter, you may need to select them in
 Settings. Open File > Settings > Editor > General > Gutter Icons and ensure that
