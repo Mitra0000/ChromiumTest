@@ -1,5 +1,7 @@
 package org.chromium.chromium_test.chromiumtest;
 
+import com.intellij.execution.ExecutionTarget;
+import com.intellij.execution.ExecutionTargetManager;
 import com.intellij.execution.ExecutorRegistry;
 import com.intellij.execution.ProgramRunnerUtil;
 import com.intellij.execution.RunManager;
@@ -10,6 +12,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.wm.ToolWindowId;
 import icons.Icons;
+import javax.swing.Icon;
 import org.apache.commons.lang.StringUtils;
 import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfiguration;
 import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationFactory;
@@ -44,12 +47,36 @@ public class RunTestAction extends AnAction implements DumbAware {
     config.setMethodName(mRequest.methodName());
     config.setIsPhysical(mIsPhysicalDevice);
 
+    // Switch out the active execution target to prevent Android Studio from rejecting the run
+    // configuration for the selected Android device.
+    ExecutionTargetManager manager = ExecutionTargetManager.getInstance(e.getProject());
+    ExecutionTarget target = manager.getActiveTarget();
+    manager.setActiveTarget(EMPTY_TARGET);
+
     ProgramRunnerUtil.executeConfiguration(settings,
         ExecutorRegistry.getInstance().getExecutorById(ToolWindowId.RUN));
+    manager.setActiveTarget(target);
   }
 
   @Override
   public boolean isDumbAware() {
     return true;
   }
+
+  private static final ExecutionTarget EMPTY_TARGET = new ExecutionTarget() {
+    @Override
+    public String getId() {
+      return "";
+    }
+
+    @Override
+    public String getDisplayName() {
+      return "";
+    }
+
+    @Override
+    public Icon getIcon() {
+      return null;
+    }
+  };
 }
