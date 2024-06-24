@@ -1,5 +1,5 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin require-restart="false">
   <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
   <id>org.chromium.chromium_test.ChromiumTest</id>
 
@@ -26,6 +26,12 @@
   <!-- Extension points defined by the plugin.
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
   <extensions defaultExtensionNs="com.intellij">
+    <applicationConfigurable
+        parentId="tools"
+        instance="org.chromium.chromium_test.chromiumtest.settings.GlobalSettingsConfigurable"
+        id="org.chromium.chromium_test.chromiumtest.settings.GlobalSettingsConfigurable"
+        displayName="Chromium Test Settings"/>
+    <applicationService serviceImplementation="org.chromium.chromium_test.chromiumtest.settings.GlobalSettings"/>
     <codeInsight.lineMarkerProvider language="JAVA"
         implementationClass="org.chromium.chromium_test.chromiumtest.TestLineMarkerDescriptor">
     </codeInsight.lineMarkerProvider>
