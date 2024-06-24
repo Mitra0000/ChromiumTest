@@ -16,14 +16,12 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
+import org.chromium.chromium_test.chromiumtest.settings.GlobalSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConfigurationOptions> {
 
-  private @NotNull String mFileName = "";
-  private @NotNull String mClassName = "";
-  private @NotNull String mMethodName = "";
   private boolean mIsPhysical = true;
 
   protected TestRunnerConfiguration(Project project, ConfigurationFactory factory, String name) {
@@ -46,13 +44,17 @@ public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConf
   @Nullable
   public RunProfileState getState(@NotNull Executor executor,
       @NotNull ExecutionEnvironment environment) {
+    GlobalSettings.State settings = GlobalSettings.getInstance().getState();
     return new CommandLineState(environment) {
       @Override
       protected @NotNull ProcessHandler startProcess() throws ExecutionException {
         GeneralCommandLine commandLine =
-            new GeneralCommandLine("tools/autotest.py", "-C", getBuildDirectory(), mFileName, "-f",
-                "*" + mClassName + "#" + (StringUtils.isNotEmpty(mMethodName) ? mMethodName : "*"));
-        commandLine.setWorkDirectory(getCheckoutDirectory());
+            new GeneralCommandLine("tools/autotest.py", "-C", getBuildDirectory(settings),
+                getOptions().getFileName(), "-f",
+                "*" + getOptions().getClassName() + "#" + (
+                    StringUtils.isNotEmpty(getOptions().getMethodName())
+                        ? getOptions().getMethodName() : "*"));
+        commandLine.setWorkDirectory(getCheckoutDirectory(settings));
         OSProcessHandler processHandler = ProcessHandlerFactory.getInstance()
             .createColoredProcessHandler(commandLine);
         ProcessTerminatedListener.attach(processHandler);
@@ -61,45 +63,13 @@ public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConf
     };
   }
 
-  public String getCheckoutDirectory() {
-    return getOptions().getCheckoutDirectory();
+  public String getCheckoutDirectory(GlobalSettings.State settings) {
+    return settings.checkoutDirectory;
   }
 
-  public void setCheckoutDirectory(String scriptName) {
-    getOptions().setCheckoutDirectory(scriptName);
-  }
-
-  public String getPhysicalBuildDirectory() {
-    return getOptions().getPhysicalBuildDirectory();
-  }
-
-  public void setPhysicalBuildDirectory(String buildDirectory) {
-    getOptions().setPhysicalBuildDirectory(buildDirectory);
-  }
-
-  public String getEmulatorBuildDirectory() {
-    return getOptions().getEmulatorBuildDirectory();
-  }
-
-  public void setEmulatorBuildDirectory(String buildDirectory) {
-    getOptions().setEmulatorBuildDirectory(buildDirectory);
-  }
-
-  public String getBuildDirectory() {
-    return mIsPhysical ? getOptions().getPhysicalBuildDirectory()
-        : getOptions().getEmulatorBuildDirectory();
-  }
-
-  public void setFileName(String fileName) {
-    mFileName = fileName;
-  }
-
-  public void setClassName(String className) {
-    mClassName = className;
-  }
-
-  public void setMethodName(String methodName) {
-    mMethodName = methodName;
+  public String getBuildDirectory(GlobalSettings.State settings) {
+    return mIsPhysical ? settings.physicalBuildDirectory
+        : settings.emulatorBuildDirectory;
   }
 
   public void setIsPhysical(boolean isPhysical) {

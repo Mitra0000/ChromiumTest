@@ -29,9 +29,9 @@ public class TestRunnerConfigurationFactory extends ConfigurationFactory {
   public @NotNull RunConfiguration createConfiguration(@NlsSafe @Nullable String name,
       @NotNull RunConfiguration template) {
     TestRunnerConfiguration config = (TestRunnerConfiguration) template;
-    config.setFileName(mRequest.fileName());
-    config.setClassName(mRequest.className());
-    config.setMethodName(mRequest.methodName());
+    config.getOptions().setFileName(mRequest.fileName());
+    config.getOptions().setClassName(mRequest.className());
+    config.getOptions().setMethodName(mRequest.methodName());
     return config;
   }
 

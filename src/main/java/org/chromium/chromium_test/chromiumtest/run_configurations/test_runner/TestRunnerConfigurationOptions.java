@@ -2,38 +2,39 @@ package org.chromium.chromium_test.chromiumtest.run_configurations.test_runner;
 
 import com.intellij.execution.configurations.RunConfigurationOptions;
 import com.intellij.openapi.components.StoredProperty;
+import org.jetbrains.annotations.NotNull;
 
 public class TestRunnerConfigurationOptions extends RunConfigurationOptions {
 
-  private final StoredProperty<String> mCheckoutDirectory = string("").provideDelegate(this,
-      "checkoutDirectory");
+  private final StoredProperty<String> mFileName = string("").provideDelegate(this,
+      "fileName");
 
-  private final StoredProperty<String> mPhysicalBuildDirectory = string(
-      "out/Debug").provideDelegate(this, "physicalBuildDirectory");
-  private final StoredProperty<String> mEmulatorBuildDirectory = string(
-      "out/Emulator").provideDelegate(this, "emulatorBuildDirectory");
+  private final StoredProperty<String> mClassName = string("").provideDelegate(this,
+      "className");
+  private final StoredProperty<String> mMethodName = string("").provideDelegate(this,
+      "methodName");
 
-  public String getCheckoutDirectory() {
-    return mCheckoutDirectory.getValue(this);
+  public String getFileName() {
+    return mFileName.getValue(this);
   }
 
-  public void setCheckoutDirectory(String checkoutDirectory) {
-    mCheckoutDirectory.setValue(this, checkoutDirectory);
+  public void setFileName(String fileName) {
+    mFileName.setValue(this, fileName);
   }
 
-  public String getPhysicalBuildDirectory() {
-    return mPhysicalBuildDirectory.getValue(this);
+  public String getClassName() {
+    return mClassName.getValue(this);
   }
 
-  public void setPhysicalBuildDirectory(String buildDirectory) {
-    mPhysicalBuildDirectory.setValue(this, buildDirectory);
+  public void setClassName(String className) {
+    mClassName.setValue(this, className);
   }
 
-  public String getEmulatorBuildDirectory() {
-    return mEmulatorBuildDirectory.getValue(this);
+  public String getMethodName() {
+    return mMethodName.getValue(this);
   }
 
-  public void setEmulatorBuildDirectory(String buildDirectory) {
-    mEmulatorBuildDirectory.setValue(this, buildDirectory);
+  public void setMethodName(String methodName) {
+    mMethodName.setValue(this, methodName);
   }
 }

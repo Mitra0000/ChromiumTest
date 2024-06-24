@@ -10,10 +10,10 @@ import org.jetbrains.annotations.NotNull;
     name = "org.chromium.chromium_test.chromiumtest.settings.GlobalSettings",
     storages = @Storage("ChromiumTestSettings.xml")
 )
-final class GlobalSettings
+public final class GlobalSettings
     implements PersistentStateComponent<GlobalSettings.State> {
 
-  static class State {
+  public static class State {
 
     public String checkoutDirectory = "";
     public String physicalBuildDirectory = "";
@@ -22,7 +22,7 @@ final class GlobalSettings
 
   private State mState = new State();
 
-  static GlobalSettings getInstance() {
+  public static GlobalSettings getInstance() {
     return ApplicationManager.getApplication()
         .getService(GlobalSettings.class);
   }

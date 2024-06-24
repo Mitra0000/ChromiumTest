@@ -42,9 +42,6 @@ public class RunTestAction extends AnAction implements DumbAware {
         .createConfiguration(
             String.format("Testing %s#%s", mRequest.className(), mRequest.methodName()), factory);
     TestRunnerConfiguration config = (TestRunnerConfiguration) settings.getConfiguration();
-    config.setFileName(mRequest.fileName());
-    config.setClassName(mRequest.className());
-    config.setMethodName(mRequest.methodName());
     config.setIsPhysical(mIsPhysicalDevice);
 
     // Switch out the active execution target to prevent Android Studio from rejecting the run

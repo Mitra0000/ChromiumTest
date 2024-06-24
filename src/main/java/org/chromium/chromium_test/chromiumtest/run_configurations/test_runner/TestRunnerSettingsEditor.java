@@ -15,36 +15,37 @@ public class TestRunnerSettingsEditor extends SettingsEditor<TestRunnerConfigura
     DumbAware {
 
   private final JPanel mPanel;
-  private final TextFieldWithBrowseButton mCheckoutPathField;
-  private final EditorTextField mPhysicalBuildDirectory;
-  private final EditorTextField mEmulatorBuildDirectory;
+  private final TextFieldWithBrowseButton mFileName;
+  private final EditorTextField mClassName;
+  private final EditorTextField mMethodName;
 
   public TestRunnerSettingsEditor() {
-    mCheckoutPathField = new TextFieldWithBrowseButton();
-    mCheckoutPathField.addBrowseFolderListener("Select Your Clankium Checkout Root", null, null,
-        FileChooserDescriptorFactory.createSingleFileDescriptor());
-    mPhysicalBuildDirectory = new EditorTextField();
-    mEmulatorBuildDirectory = new EditorTextField();
+    mFileName = new TextFieldWithBrowseButton();
+    mFileName.addBrowseFolderListener("Select The File Containing The Tests", null, null,
+        FileChooserDescriptorFactory.createSingleFileDescriptor("java"));
+
+    mClassName = new EditorTextField();
+    mMethodName = new EditorTextField();
     mPanel = FormBuilder.createFormBuilder()
-        .addLabeledComponent("Checkout directory", mCheckoutPathField)
+        .addLabeledComponent("File Name", mFileName)
         .addComponent(new Separator())
-        .addLabeledComponent("Physical build directory", mPhysicalBuildDirectory)
-        .addLabeledComponent("Emulator build directory", mEmulatorBuildDirectory)
+        .addLabeledComponent("Class Name", mClassName)
+        .addLabeledComponent("Method Name", mMethodName)
         .getPanel();
   }
 
   @Override
   protected void resetEditorFrom(TestRunnerConfiguration runConfiguration) {
-    mCheckoutPathField.setText(runConfiguration.getCheckoutDirectory());
-    mPhysicalBuildDirectory.setText(runConfiguration.getPhysicalBuildDirectory());
-    mEmulatorBuildDirectory.setText(runConfiguration.getEmulatorBuildDirectory());
+    mFileName.setText(runConfiguration.getOptions().getFileName());
+    mClassName.setText(runConfiguration.getOptions().getClassName());
+    mMethodName.setText(runConfiguration.getOptions().getMethodName());
   }
 
   @Override
   protected void applyEditorTo(@NotNull TestRunnerConfiguration runConfiguration) {
-    runConfiguration.setCheckoutDirectory(mCheckoutPathField.getText());
-    runConfiguration.setPhysicalBuildDirectory(mPhysicalBuildDirectory.getText());
-    runConfiguration.setEmulatorBuildDirectory(mEmulatorBuildDirectory.getText());
+    runConfiguration.getOptions().setFileName(mFileName.getText());
+    runConfiguration.getOptions().setClassName(mClassName.getText());
+    runConfiguration.getOptions().setMethodName(mMethodName.getText());
   }
 
   @NotNull
