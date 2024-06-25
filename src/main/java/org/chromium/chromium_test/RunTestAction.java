@@ -12,8 +12,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.wm.ToolWindowId;
 import icons.Icons;
-import javax.swing.Icon;
 import org.apache.commons.lang.StringUtils;
+import org.chromium.chromium_test.common.EmptyExecutionTarget;
 import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfiguration;
 import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfigurationFactory;
 import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfigurationType;
@@ -49,7 +49,7 @@ public class RunTestAction extends AnAction implements DumbAware {
     // configuration for the selected Android device.
     ExecutionTargetManager manager = ExecutionTargetManager.getInstance(e.getProject());
     ExecutionTarget target = manager.getActiveTarget();
-    manager.setActiveTarget(EMPTY_TARGET);
+    manager.setActiveTarget(EmptyExecutionTarget.get());
 
     ProgramRunnerUtil.executeConfiguration(settings,
         ExecutorRegistry.getInstance().getExecutorById(ToolWindowId.RUN));
@@ -60,21 +60,4 @@ public class RunTestAction extends AnAction implements DumbAware {
   public boolean isDumbAware() {
     return true;
   }
-
-  private static final ExecutionTarget EMPTY_TARGET = new ExecutionTarget() {
-    @Override
-    public String getId() {
-      return "";
-    }
-
-    @Override
-    public String getDisplayName() {
-      return "";
-    }
-
-    @Override
-    public Icon getIcon() {
-      return null;
-    }
-  };
 }
