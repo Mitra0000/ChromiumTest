@@ -25,6 +25,7 @@ import org.jetbrains.annotations.Nullable;
  * test suite using Chromium's tools/autotest.py.
  */
 public class TestRunLineMarkerContributor extends RunLineMarkerContributor implements DumbAware {
+  private static final boolean SHOW_BISECTOR_ACTION = false;
 
   private static final Logger LOG = Logger.getInstance(TestRunLineMarkerContributor.class);
 
@@ -83,9 +84,12 @@ public class TestRunLineMarkerContributor extends RunLineMarkerContributor imple
 
   private static @NotNull Info createInfoForMethod(String fileName, String className,
       String methodName) {
-    AnAction[] actions = new AnAction[2];
+    AnAction[] actions = new AnAction[SHOW_BISECTOR_ACTION ? 3 : 2];
     actions[0] = new RunTestAction(fileName, className, methodName, true);
     actions[1] = new RunTestAction(fileName, className, methodName, false);
+    if (SHOW_BISECTOR_ACTION) {
+      actions[2] = new BisectTestAction(fileName, className, methodName);
+    }
     return new Info(Icons.RunIcon, actions, element -> "Test with autotest.py");
   }
 
