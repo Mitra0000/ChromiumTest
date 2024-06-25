@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest.run_configurations.test_runner;
+package org.chromium.chromium_test.run_configurations.test_runner;
 
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
@@ -16,7 +16,7 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
-import org.chromium.chromium_test.chromiumtest.settings.GlobalSettings;
+import org.chromium.chromium_test.settings.GlobalSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

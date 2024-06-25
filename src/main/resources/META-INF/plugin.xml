@@ -28,17 +28,17 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationConfigurable
         parentId="tools"
-        instance="org.chromium.chromium_test.chromiumtest.settings.GlobalSettingsConfigurable"
-        id="org.chromium.chromium_test.chromiumtest.settings.GlobalSettingsConfigurable"
+        instance="org.chromium.chromium_test.settings.GlobalSettingsConfigurable"
+        id="org.chromium.chromium_test.settings.GlobalSettingsConfigurable"
         displayName="Chromium Test Settings"/>
-    <applicationService serviceImplementation="org.chromium.chromium_test.chromiumtest.settings.GlobalSettings"/>
+    <applicationService serviceImplementation="org.chromium.chromium_test.settings.GlobalSettings"/>
     <codeInsight.lineMarkerProvider language="JAVA"
-        implementationClass="org.chromium.chromium_test.chromiumtest.TestLineMarkerDescriptor">
+        implementationClass="org.chromium.chromium_test.TestLineMarkerDescriptor">
     </codeInsight.lineMarkerProvider>
     <configurationType
-        implementation="org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationType"/>
+        implementation="org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfigurationType"/>
     <runLineMarkerContributor language="JAVA"
-        implementationClass="org.chromium.chromium_test.chromiumtest.TestRunLineMarkerContributor"
+        implementationClass="org.chromium.chromium_test.TestRunLineMarkerContributor"
         order="first"/>
   </extensions>
 </idea-plugin>

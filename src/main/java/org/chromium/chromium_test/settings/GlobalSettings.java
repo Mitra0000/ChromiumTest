@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest.settings;
+package org.chromium.chromium_test.settings;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -7,7 +7,7 @@ import com.intellij.openapi.components.Storage;
 import org.jetbrains.annotations.NotNull;
 
 @State(
-    name = "org.chromium.chromium_test.chromiumtest.settings.GlobalSettings",
+    name = "org.chromium.chromium_test.settings.GlobalSettings",
     storages = @Storage("ChromiumTestSettings.xml")
 )
 public final class GlobalSettings

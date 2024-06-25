@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest;
+package org.chromium.chromium_test;
 
 import com.intellij.execution.ExecutionTarget;
 import com.intellij.execution.ExecutionTargetManager;
@@ -14,9 +14,9 @@ import com.intellij.openapi.wm.ToolWindowId;
 import icons.Icons;
 import javax.swing.Icon;
 import org.apache.commons.lang.StringUtils;
-import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfiguration;
-import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationFactory;
-import org.chromium.chromium_test.chromiumtest.run_configurations.test_runner.TestRunnerConfigurationType;
+import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfiguration;
+import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfigurationFactory;
+import org.chromium.chromium_test.run_configurations.test_runner.TestRunnerConfigurationType;
 import org.jetbrains.annotations.NotNull;
 
 /** Implementation of AnAction which runs either an individual test or all tests in a class. */

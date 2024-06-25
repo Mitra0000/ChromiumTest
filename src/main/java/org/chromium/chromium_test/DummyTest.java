@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest;
+package org.chromium.chromium_test;
 
 import org.junit.Test;
 import org.junit.internal.runners.JUnit4ClassRunner;

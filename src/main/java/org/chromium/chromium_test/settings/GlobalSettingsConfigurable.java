@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest.settings;
+package org.chromium.chromium_test.settings;
 
 import com.intellij.openapi.options.Configurable;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package org.chromium.chromium_test.chromiumtest;
+package org.chromium.chromium_test;
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor;
