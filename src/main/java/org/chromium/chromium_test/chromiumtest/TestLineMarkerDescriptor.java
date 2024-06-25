@@ -8,6 +8,10 @@ import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * This class provides a way for the user to enable or disable showing the gutter icons for the
+ * ChromiumTest plugin. The setting shows in File > Settings > Editor > General > Gutter Icons.
+ */
 public class TestLineMarkerDescriptor extends LineMarkerProviderDescriptor {
 
   @Override

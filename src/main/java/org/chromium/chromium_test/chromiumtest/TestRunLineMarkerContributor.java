@@ -17,6 +17,13 @@ import icons.Icons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Provides {@code Info} objects given a PsiElement. An {@code Info} object consists of an icon,
+ * metadata like title and tooltip text as well as {@code AnAction} which is performed when clicked.
+ *
+ * This RunLineMarkerContributor provider gutter icons for Java tests which will run the test or
+ * test suite using Chromium's tools/autotest.py.
+ */
 public class TestRunLineMarkerContributor extends RunLineMarkerContributor implements DumbAware {
 
   private static final Logger LOG = Logger.getInstance(TestRunLineMarkerContributor.class);

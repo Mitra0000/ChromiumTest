@@ -7,6 +7,7 @@ import com.intellij.openapi.project.DumbAware;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+/** Implementation of AnAction which finds the commit that broke a test/suite of tests. */
 public class BisectTestAction extends AnAction implements DumbAware {
 
   private final TestRequest mRequest;
