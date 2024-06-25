@@ -28,7 +28,7 @@ public class TestRunnerConfigurationFactory extends ConfigurationFactory {
   @Override
   public @NotNull RunConfiguration createConfiguration(@NlsSafe @Nullable String name,
       @NotNull RunConfiguration template) {
-    TestRunnerConfiguration config = (TestRunnerConfiguration) template;
+    TestRunnerConfiguration config = (TestRunnerConfiguration) template.clone();
     config.getOptions().setFileName(mRequest.fileName());
     config.getOptions().setClassName(mRequest.className());
     config.getOptions().setMethodName(mRequest.methodName());
