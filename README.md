@@ -12,8 +12,8 @@ come with unwanted side effects like popup error messages saying that Gradle
 couldn't build the test correctly.
 
 ## Setup
-Once the plugin is installed, go to File > Settings > Tools > Chromium Test
-Settings.
+See build/archive/README.md for instructions on how to install the plugin. Once
+the plugin is installed, go to File > Settings > Tools > Chromium Test Settings.
 
 The setup panel should load on the right hand side. First, point the Checkout
 directory to the root of your Clankium checkout and set the physical and
