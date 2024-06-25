@@ -7,6 +7,7 @@ import com.intellij.openapi.components.BaseState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsSafe;
 import org.chromium.chromium_test.TestRequest;
+import org.chromium.chromium_test.run_configurations.TestRelatedConfigurationOptions;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -42,6 +43,6 @@ public class TestRunnerConfigurationFactory extends ConfigurationFactory {
 
   @Override
   public @Nullable Class<? extends BaseState> getOptionsClass() {
-    return TestRunnerConfigurationOptions.class;
+    return TestRelatedConfigurationOptions.class;
   }
 }

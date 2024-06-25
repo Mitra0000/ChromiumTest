@@ -1,10 +1,9 @@
-package org.chromium.chromium_test.run_configurations.test_runner;
+package org.chromium.chromium_test.run_configurations;
 
 import com.intellij.execution.configurations.RunConfigurationOptions;
 import com.intellij.openapi.components.StoredProperty;
-import org.jetbrains.annotations.NotNull;
 
-public class TestRunnerConfigurationOptions extends RunConfigurationOptions {
+public class TestRelatedConfigurationOptions extends RunConfigurationOptions {
 
   private final StoredProperty<String> mFileName = string("").provideDelegate(this,
       "fileName");

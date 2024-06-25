@@ -16,11 +16,12 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
+import org.chromium.chromium_test.run_configurations.TestRelatedConfigurationOptions;
 import org.chromium.chromium_test.settings.GlobalSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConfigurationOptions> {
+public class TestRunnerConfiguration extends RunConfigurationBase<TestRelatedConfigurationOptions> {
 
   private boolean mIsPhysical = true;
 
@@ -30,8 +31,8 @@ public class TestRunnerConfiguration extends RunConfigurationBase<TestRunnerConf
 
   @Override
   @NotNull
-  protected TestRunnerConfigurationOptions getOptions() {
-    return (TestRunnerConfigurationOptions) super.getOptions();
+  protected TestRelatedConfigurationOptions getOptions() {
+    return (TestRelatedConfigurationOptions) super.getOptions();
   }
 
   @Override
