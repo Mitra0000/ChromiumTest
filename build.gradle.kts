@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.chromium.chromium_test"
-version = "2.1.0"
+version = "2.2.0"
 
 repositories {
   mavenCentral()
