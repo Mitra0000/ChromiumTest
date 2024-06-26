@@ -15,6 +15,7 @@ import com.intellij.execution.process.ProcessTerminatedListener;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
+import org.apache.commons.lang.StringUtils;
 import org.chromium.chromium_test.settings.GlobalSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +46,15 @@ public class TestBisectorConfiguration extends
       @Override
       protected @NotNull ProcessHandler startProcess() throws ExecutionException {
         GeneralCommandLine commandLine =
-            new GeneralCommandLine("echo", "This is under development");
+            new GeneralCommandLine("sh", "-c", String.format(
+                "git bisect start; git bisect good %s; git bisect bad %s; "
+                    + "git bisect run sh -c 'gclient sync -D || exit 125; "
+                    + "tools/autotest.py -C %s %s -f \"*%s#%s*\"'; git bisect reset;",
+                getOptions().getGoodHash(),
+                getOptions().getBadHash(),
+                settings.emulatorBuildDirectory, getOptions().getFileName(),
+                getOptions().getClassName(), StringUtils.isNotEmpty(getOptions().getMethodName())
+                    ? getOptions().getMethodName() : "*"));
         commandLine.setWorkDirectory(settings.checkoutDirectory);
         OSProcessHandler processHandler = ProcessHandlerFactory.getInstance()
             .createColoredProcessHandler(commandLine);
